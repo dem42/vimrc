@@ -2,8 +2,8 @@
 
 -- disable netrw at the very start of your init.lua
 -- so that it doesn't interfere with nvim-tree which is a plugin we use
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+--vim.g.loaded_netrw = 1
+--vim.g.loaded_netrwPlugin = 1
 
 -- The "<leader>" key is now mapped to " "
 -- Make sure to setup `mapleader` and `maplocalleader` before

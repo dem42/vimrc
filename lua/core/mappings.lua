@@ -1,6 +1,9 @@
 -- Map " pv" key sequence to :Ex which opens netrw (the built-in dired mode/file-explorer)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>pc", "<cmd>e " .. vim.fn.stdpath("config") .. "<CR>")
+--vim.keymap.set("n", "<leader>et", "<cmd>NvimTreeToggle<CR>")
+--vim.keymap.set("n", "<leader>ev", "<cmd>NvimTreeOpen " .. vim.fn.expand('%:p:h') .. "<CR>")
+--vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeOpen " .. vim.fn.stdpath('config') .. "<CR>")
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -62,3 +65,16 @@ function SetCwd()
 end
 
 vim.api.nvim_create_user_command('SetCwd', SetCwd, {})
+
+function Python_gF()
+    -- Find a suitable line number on the current line
+    local line = vim.api.nvim_get_current_line()
+    local list = {string.match(line, '"(.+)", line (%d+)')}
+
+    -- If a match is found, jump to the file and line
+    if #list == 2 and #list[1] > 0 and tonumber(list[2]) then
+        vim.cmd("wincmd k | edit " .. list[1])
+        vim.cmd(tostring(list[2]))
+    end
+end
+vim.keymap.set({'n', 't'}, 'gpF', function() Python_gF() end)
