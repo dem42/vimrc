@@ -1,3 +1,18 @@
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save' })
+vim.keymap.set('i', '<C-s>', '<C-o><cmd>w<CR>', { desc = 'Save' })
+
+vim.keymap.set({'n', 'i'}, '<C-s>', '<cmd>w<CR>', { desc = 'Save' })
+
+vim.keymap.set('v', '<A-Up>', ":m-2<CR>gv=gv", { desc = 'Move line up' })
+vim.keymap.set('v', '<A-Down>', ":m'>+<CR>gv=gv", { desc = 'Move line down' })
+vim.keymap.set('n', '<A-Up>', ":<C-u>m-2<CR>==", { desc = 'Move line up' })
+vim.keymap.set('n', '<A-Down>', ":<C-u>m+<CR>==", { desc = 'Move line down' })
+
 -- Map " pv" key sequence to :Ex which opens netrw (the built-in dired mode/file-explorer)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>pc", "<cmd>e " .. vim.fn.stdpath("config") .. "<CR>")

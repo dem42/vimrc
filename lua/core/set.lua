@@ -18,7 +18,7 @@ vim.o.expandtab = true
 
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.opt.mouse = 'a'
