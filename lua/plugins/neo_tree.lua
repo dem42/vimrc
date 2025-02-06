@@ -9,6 +9,7 @@ return {
     config = function()
         vim.keymap.set("n", "<leader>ev", "<cmd>Neotree position=right dir=%:p:h:h reveal_file=%:p<CR>")
         vim.keymap.set("n", "<leader>ec", "<cmd>Neotree position=right dir=C:/Users/marti/AppData/Local/nvim<CR>")
+        vim.keymap.set("n", "<leader>ew", "<cmd>Neotree position=right dir=C:/workspace/cpp<CR>")
     end
 }
 

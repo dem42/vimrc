@@ -1,3 +1,34 @@
+vim.keymap.set('n', '-', function()
+    local reveal_file = vim.fn.expand('%:p')
+    if (reveal_file == '') then
+        reveal_file = vim.fn.getcwd()
+    else
+        local f = io.open(reveal_file, "r")
+        if (f) then
+            f.close(f)
+        else
+            reveal_file = vim.fn.getcwd()
+        end
+    end
+    require('neo-tree.command').execute({
+        action = "focus",          -- OPTIONAL, this is the default value
+        source = "filesystem",     -- OPTIONAL, this is the default value
+        position = "right",         -- OPTIONAL, this is the default value
+        reveal_file = reveal_file, -- path to file or folder to reveal
+        reveal_force_cwd = true,   -- change cwd without asking if needed
+    })
+end,
+{ desc = "Open neo-tree at current file or working directory" }
+);
+
+
+function SetUseCMake()
+    local cmake_base_dir = vim.fn.expand('%:p:h')
+    vim.go.makeef = cmake_base_dir .. "/Make.log"
+    vim.go.makeprg = "cmake -S " .. cmake_base_dir .. " -B " .. cmake_base_dir .. "/Build -DASAN:BOOL=true"
+end
+vim.api.nvim_create_user_command('UseCmake', SetUseCMake, {})
+
 vim.keymap.set('n', '[q', '<cmd>cnext<CR>', { desc = 'quick-fix list next' })
 vim.keymap.set('n', ']q', '<cmd>cprev<CR>', { desc = 'quick-fix list previous' })
 
